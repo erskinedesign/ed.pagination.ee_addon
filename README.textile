@@ -1,0 +1,43 @@
+h1. ED pagination for ExpressionEngine 2.x
+
+A more friendly approach to EE channel pagination.
+
+h2. Installation
+
+# Copy ext.ed_pagination.php to @system/expressionengine/third_party/ed_pagination@
+# Enable in the control panel
+
+h2. Usage
+
+All the "original pagination methods and malarkey":http://expressionengine.com/user_guide/modules/channel/pagination_page.html are supported, but in addition you may use the @ed_pages@ tag pair.
+
+h3. Variables:
+
+* @href@ the url to the paginated page
+* @cur@ a string containing 'cur' if the page in the loop is the current one
+* @page_no@ an integer of the current page int the loop
+
+h3. Example template usage:
+
+bc.. {pagination}
+{if total_pages > 1}
+<p>Page {current_page} of {total_pages}</p>
+<ul>
+{ed_pages}
+    <li class="{cur}"><a href="{href}">{page_no}</a></li>
+{/ed_pages}
+</ul>
+{/if}
+{/pagination}
+
+p. Which would output:
+
+bc.. <p>Page 2 of 4</p>
+<ul>
+    <li class=""><a href="/path/to/page/">1</a></li>
+    <li class="cur"><a href="/path/to/page/P5">2</a></li>
+    <li class=""><a href="/path/to/page/P10">3</a></li>
+    <li class=""><a href="/path/to/page/P15">4</a></li>
+</ul>
+
+p. That's based on there being a limit of 5 in your entries tag.
