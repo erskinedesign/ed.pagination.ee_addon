@@ -5,7 +5,7 @@
  * REQUIRES ExpressionEngine 2+
  * 
  * @package     Ed_pagination_ext
- * @version     1.0.0
+ * @version     0.1
  * @author      Wil Linssen (Erskine Design)
  * @copyright   Copyright (c) 2011 Erskine Design
  * @license     http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported
@@ -19,7 +19,7 @@ Class Ed_pagination_ext
     public $name = 'ED pagination links';
     public $version = '0.1';
     public $description = 'Friendly pagination links';
-    public $settings_exist = 'y';
+    public $settings_exist = 'n';
     public $docs_url = 'http:/github.com/erskinedesign/';
     
     
