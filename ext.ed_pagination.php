@@ -291,13 +291,18 @@ Class Ed_pagination_ext
             // Side puts the current page in the center of the limit
             $side = ($limit - 1) / 2;
             
+            if ( $data->total_pages <= $limit )
+            {
+                $lower = 1;
+                $upper = $data->total_pages;
+            }
             // If there can't be a page to the left of the current page
-            if ( $data->current_page - $side <= 0 )
+            elseif ( $data->current_page - $side <= 0 )
             {
                 $lower = 1;
                 $upper = $lower -1 + $limit;
             }
-            // If there can't be a page to the right of the current page
+            // If there can't be enough pages to the right of the current page
             elseif ( $data->current_page + $side > $data->total_pages )
             {
                 $lower = $data->total_pages + 1 - $limit;
@@ -309,6 +314,7 @@ Class Ed_pagination_ext
                 $lower = $data->current_page - $side;
                 $upper = $data->current_page + $side;
             }
+            
             
             // Find the {ed_pages} pair, and work away
             $pattern = '/'.LD.'ed_pages'.RD.'(.*)'.LD.'\/ed_pages'.RD.'/si';
