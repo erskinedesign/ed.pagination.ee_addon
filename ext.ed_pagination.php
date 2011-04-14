@@ -20,7 +20,7 @@ Class Ed_pagination_ext
     public $version = '0.1';
     public $description = 'Friendly pagination links';
     public $settings_exist = 'n';
-    public $docs_url = 'http:/github.com/erskinedesign/';
+    public $docs_url = 'https://github.com/erskinedesign/ed.pagination.ee_addon';
     
     
     /**
