@@ -315,7 +315,6 @@ Class Ed_pagination_ext
                 $upper = $data->current_page + $side;
             }
             
-            
             // Find the {ed_pages} pair, and work away
             $pattern = '/'.LD.'ed_pages'.RD.'(.*)'.LD.'\/ed_pages'.RD.'/si';
             if ( preg_match($pattern, $tagdata, $matches) )
@@ -345,6 +344,11 @@ Class Ed_pagination_ext
                 // Replace the original tag with our newly built one
                 $data->paginate_data = str_replace($matches[0], $links, $data->paginate_data);
             }
+            
+            // First and last pages
+            $last_page = ($data->total_pages -1 ) * $data->p_limit;
+            $data->paginate_data = str_replace(LD.'ed_first_page_href'.RD, $data->basepath, $data->paginate_data);
+            $data->paginate_data = str_replace(LD.'ed_last_page_href'.RD, $data->basepath.'/P'.$last_page, $data->paginate_data);
             
         }
 
