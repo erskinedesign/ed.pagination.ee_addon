@@ -22,11 +22,10 @@ h3. Example template usage:
 bc.. {paginate}
 
 {if "{total_pages}" > "1"}
-</ul>
 <div class="pagination">
     <p>Page {current_page} of {total_pages}</p>
     <ul>
-        
+        <li class="first_page"><a href="{ed_first_page_href}">First page</a></li>
         {if previous_page}
         <li class="prev_page"><a href="{auto_path}">&lt;</a></li>
         {/if}
@@ -36,11 +35,9 @@ bc.. {paginate}
         {if next_page}
         <li class="next_page"><a href="{auto_path}">&gt;</a></li>
         {/if}
+        <li class="last_page"><a href="{ed_last_page_href}">Last page</a></li>
     </ul>
 </div><!-- //.pagination -->
-{/if}
-{if "{total_pages}" == "1"}
-</ul>
 {/if}
 
 {/paginate}
