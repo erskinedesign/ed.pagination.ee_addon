@@ -19,25 +19,42 @@ h3. Variables:
 
 h3. Example template usage:
 
-bc.. {pagination}
-{if total_pages > 1}
-<p>Page {current_page} of {total_pages}</p>
-<ul>
-{ed_pages}
-    <li class="{cur}"><a href="{href}">{page_no}</a></li>
-{/ed_pages}
+bc.. {paginate}
+
+{if "{total_pages}" > "1"}
+</ul>
+<div class="pagination">
+    <p>Page {current_page} of {total_pages}</p>
+    <ul>
+        
+        {if previous_page}
+        <li class="prev_page"><a href="{auto_path}">&lt;</a></li>
+        {/if}
+        {ed_pages}
+        <li class="{cur}"><a href="{href}">{page_no}</a></li>
+        {/ed_pages}
+        {if next_page}
+        <li class="next_page"><a href="{auto_path}">&gt;</a></li>
+        {/if}
+    </ul>
+</div><!-- //.pagination -->
+{/if}
+{if "{total_pages}" == "1"}
 </ul>
 {/if}
-{/pagination}
+
+{/paginate}
 
 p. Which would output:
 
 bc.. <p>Page 2 of 4</p>
 <ul>
+    <li class="prev_page"><a href="/path/to/page/">&lt;</a></li>
     <li class=""><a href="/path/to/page/">1</a></li>
     <li class="cur"><a href="/path/to/page/P5">2</a></li>
     <li class=""><a href="/path/to/page/P10">3</a></li>
     <li class=""><a href="/path/to/page/P15">4</a></li>
+    <li class="next_page"><a href="/path/to/page/P10">&gt;</a></li>
 </ul>
 
 p. That's based on there being a limit of 5 in your entries tag.

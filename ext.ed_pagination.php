@@ -282,12 +282,42 @@ Class Ed_pagination_ext
              * which we'll replace with nicer links, it'll ignore it if it's
              * not there.
             /* --------------------------------------*/
+            
+            // Limit represents the number of pages to show in the list
+            // ExpressionEngine's own pagination defaults to 5
+            $limit = 5;
+            // Make sure it's odd, and increment if not
+            $limit = $limit % 2 == 0 ? $limit + 1 : $limit;
+            // Side puts the current page in the center of the limit
+            $side = ($limit - 1) / 2;
+            
+            // If there can't be a page to the left of the current page
+            if ( $data->current_page - $side <= 0 )
+            {
+                $lower = 1;
+                $upper = $lower -1 + $limit;
+            }
+            // If there can't be a page to the right of the current page
+            elseif ( $data->current_page + $side > $data->total_pages )
+            {
+                $lower = $data->total_pages + 1 - $limit;
+                $upper = $data->total_pages;
+            }
+            // Otherwise just show the current page in the middle
+            else 
+            {
+                $lower = $data->current_page - $side;
+                $upper = $data->current_page + $side;
+            }
+            
+            // Find the {ed_pages} pair, and work away
             $pattern = '/'.LD.'ed_pages'.RD.'(.*)'.LD.'\/ed_pages'.RD.'/si';
             if ( preg_match($pattern, $tagdata, $matches) )
             {
                 // Build it!
                 $links = '';
-                for ( $i=1; $i<=$data->total_pages; $i++ )
+            
+                for ( $i=$lower; $i<=$upper; $i++ )
                 {
                     // The data between the tag pair
                     $link = $matches[1];
