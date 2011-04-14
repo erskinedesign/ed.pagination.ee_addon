@@ -16,8 +16,8 @@ h3. Variables:
 * @href@ the url to the paginated page
 * @cur@ a string containing 'cur' if the page in the loop is the current one
 * @page_no@ an integer of the current page int the loop
-* @ed_first_poge_href@* the url to the first paginated page
-* @ed_last_page_href@* the url to the last paginated page
+* @ed_first_poge_href@ the url to the first paginated page
+* @ed_last_page_href@ the url to the last paginated page
 
 h3. Example template usage:
 
