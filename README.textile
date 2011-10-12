@@ -2,6 +2,8 @@ h1. ED pagination for ExpressionEngine 2.x
 
 A more friendly approach to EE channel pagination.
 
+_This feature is now available as part of EE2.3 and works almost identically. See "the documentation":http://expressionengine.com/user_guide/modules/channel/pagination_page.html#pagination-links for more information._
+
 h2. Installation
 
 # Copy ext.ed_pagination.php to @system/expressionengine/third_party/ed_pagination@
